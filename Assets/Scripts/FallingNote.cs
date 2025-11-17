@@ -2,37 +2,43 @@ using UnityEngine;
 
 public class FallingNote : MonoBehaviour
 {
+    [Header("Identity")]
+    public int noteID; // Set this in Prefab! 0=Red, 1=Blue, 2=Green, 3=Yellow
+
+    [Header("Movement")]
     public float fallSpeed = 4f;
     public float spinSpeed = 100f;
 
     void Update()
     {
-        // 1. Fall Down (World Space)
+        // Fall (World Space)
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
 
-        // 2. Spin Horizontally (World Space)
-        // "Vector3.up" here means the global green Y axis
+        // Spin (World Up Axis)
         transform.Rotate(Vector3.up * spinSpeed * Time.deltaTime, Space.World);
 
-        // 3. Destroy if off screen
+        // Destroy if missed (below floor)
         if (transform.position.y < -5f)
         {
             Destroy(gameObject);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        // Hit Player = Good
+        // HIT PLAYER
         if (other.CompareTag("Player"))
         {
-            MusicManager.Instance.PlayNextNote();
+            // Tell Manager WHAT we caught (0, 1, 2, or 3)
+            MusicManager.Instance.CheckCaughtNote(noteID);
             Destroy(gameObject);
         }
-        // Hit Floor (tagged as Finish) = Bad
+        // HIT FLOOR
         else if (other.CompareTag("Finish"))
         {
-            Debug.Log("Game Over!"); // Debug check
-            MusicManager.Instance.GameOver(); // Call the manager
+            // Just destroy for now. 
+            // Uncomment next line if you want Game Over on ANY miss:
+            // MusicManager.Instance.GameOver();
             Destroy(gameObject);
         }
     }

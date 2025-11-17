@@ -146,5 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140247575960e4243b239ea73aa56ca6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  noteID: 3
   fallSpeed: 4
   spinSpeed: 100
