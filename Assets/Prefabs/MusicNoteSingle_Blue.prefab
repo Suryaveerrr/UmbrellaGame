@@ -147,5 +147,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   noteID: 1
-  fallSpeed: 4
+  fallSpeed: 6
   spinSpeed: 100

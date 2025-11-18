@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
 {
-    [Header("Setup")]
-    // Change Size to 4 and drag Prefabs: Red, Blue, Green, Yellow
     public GameObject[] notePrefabs;
     public Transform player;
 
     [Header("Settings")]
-    public float spawnInterval = 1.0f;
-    public float xRange = 7f;
+    public float spawnInterval = 0.6f; // Faster spawning!
+    public float laneDistance = 3f; // MUST match the Player's lane distance
 
     void Start()
     {
@@ -20,14 +18,21 @@ public class NoteSpawner : MonoBehaviour
     {
         if (player == null || notePrefabs.Length == 0) return;
 
-        // 1. Pick a random color
-        int randomIndex = Random.Range(0, notePrefabs.Length);
-        GameObject selectedPrefab = notePrefabs[randomIndex];
+        // 1. Pick Random Note Color
+        GameObject selectedPrefab = notePrefabs[Random.Range(0, notePrefabs.Length)];
 
-        // 2. Position (Match Player Z)
-        Vector3 spawnPos = new Vector3(Random.Range(-xRange, xRange), 10f, player.position.z);
+        // 2. Pick Random Lane (0, 1, or 2)
+        int randomLaneIndex = Random.Range(0, 3);
+        float spawnX = 0f;
 
-        // 3. Spawn (Keep Prefab Rotation)
+        if (randomLaneIndex == 0) spawnX = -laneDistance;
+        else if (randomLaneIndex == 1) spawnX = 0f;
+        else if (randomLaneIndex == 2) spawnX = laneDistance;
+
+        // 3. Spawn Position
+        Vector3 spawnPos = new Vector3(spawnX, 10f, player.position.z);
+
+        // 4. Instantiate
         Instantiate(selectedPrefab, spawnPos, selectedPrefab.transform.rotation);
     }
 }

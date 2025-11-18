@@ -2,43 +2,38 @@ using UnityEngine;
 
 public class FallingNote : MonoBehaviour
 {
-    [Header("Identity")]
-    public int noteID; // Set this in Prefab! 0=Red, 1=Blue, 2=Green, 3=Yellow
-
-    [Header("Movement")]
-    public float fallSpeed = 4f;
+    public int noteID; // 0=Red, 1=Blue, etc.
+    public float fallSpeed = 10f;
     public float spinSpeed = 100f;
+
+    private bool hasTriggered = false; // Prevents double hits
 
     void Update()
     {
-        // Fall (World Space)
+        // Fall & Spin
         transform.Translate(Vector3.down * fallSpeed * Time.deltaTime, Space.World);
-
-        // Spin (World Up Axis)
         transform.Rotate(Vector3.up * spinSpeed * Time.deltaTime, Space.World);
 
-        // Destroy if missed (below floor)
-        if (transform.position.y < -5f)
-        {
-            Destroy(gameObject);
-        }
+        // Safety destroy if it falls way below map (just in case)
+        if (transform.position.y < -10f) Destroy(gameObject);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // HIT PLAYER
+        if (hasTriggered) return;
+
+        // 1. CAUGHT BY PLAYER (GOOD)
         if (other.CompareTag("Player"))
         {
-            // Tell Manager WHAT we caught (0, 1, 2, or 3)
-            MusicManager.Instance.CheckCaughtNote(noteID);
+            hasTriggered = true;
+            MusicManager.Instance.NoteCaught(noteID); // Play Sound
             Destroy(gameObject);
         }
-        // HIT FLOOR
+        // 2. HIT THE FLOOR (BAD)
         else if (other.CompareTag("Finish"))
         {
-            // Just destroy for now. 
-            // Uncomment next line if you want Game Over on ANY miss:
-            // MusicManager.Instance.GameOver();
+            hasTriggered = true;
+            MusicManager.Instance.NoteMissed(); // GAME OVER!
             Destroy(gameObject);
         }
     }
