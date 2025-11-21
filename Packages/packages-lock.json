@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.unity.asset-store-tools": {
+      "version": "file:D:/unity-optimizations-package-main/Packages/com.unity.asset-store-tools",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.burst": {
       "version": "1.8.21",
       "depth": 1,
