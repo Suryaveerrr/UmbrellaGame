@@ -1,58 +1,59 @@
-Rhythm Rain: A 3-Lane Rhythm Prototype
+# 🌧️ Rhythm Rain: 3-Lane Rhythm Prototype
 
 
-This is a 3D rhythm-action prototype built in Unity (URP). The player controls a character in a 3-lane environment, tasked with catching falling musical notes. The game is a "survival mode" challenge where the player must catch every note to keep the music playing.
+> **A high-speed 3D rhythm-action game built as an iterative internship task.**
 
-This project was developed as an iterative internship task, focusing on rapid prototyping, implementing feedback, and building a polished core gameplay loop.
+<img width="1601" height="897" alt="image" src="https://github.com/user-attachments/assets/f71e0b60-f8e8-4147-a2bf-42a6782e359d" />
+<img width="1600" height="896" alt="image" src="https://github.com/user-attachments/assets/81a9f131-f908-425f-80d3-2e91672c66d2" />
 
-✨ Core Features
+**Rhythm Rain** is a "survival mode" challenge where the player controls a character in a 3-lane environment, tasked with catching falling musical notes. The goal is perfection: keep the music playing by catching every single note.
 
-3-Lane Rhythm Gameplay: Fast-paced, lane-switching action (Left, Middle, Right).
+---
 
-"Don't Miss" Challenge: A pure survival mode. If a single note hits the floor, the game ends.
+## 📖 About The Project
+This project was developed to focus on **rapid prototyping**, **feedback implementation**, and building a polished **core gameplay loop**.
 
-Juicy Player Movement: Uses DOTween for smooth, "snappy" easing as the player moves between lanes with a single tap.
+The scene is built using the **Universal Render Pipeline (URP)**, featuring a custom night sky, a reflective "wet" platform, and multi-layered rain particle systems to create an immersive atmosphere.
 
-Dynamic Note Spawning: Four different types of colored notes (Red, Blue, Green, Yellow) spawn at high speed in one of the three lanes.
+---
 
-Reactive Audio System: Each note color plays a unique, harmonious sound (a C-Major arpeggio), allowing the player to create a melody as they play.
+## ✨ Core Features
 
-Atmospheric Scene: Built with URP, featuring a custom night sky, reflective "wet" platform, and multi-layered particle systems for rain.
+* **3-Lane Rhythm Gameplay:** Fast-paced action requiring quick reflexes to switch between Left, Middle, and Right lanes.
+* **"Don't Miss" Challenge:** A pure survival mode. If a single note hits the floor, the game ends immediately.
+* **Juicy Movement:** Utilizes **DOTween** for smooth, "snappy" easing, making the movement feel responsive and fluid.
+* **Dynamic Note Spawning:** Four distinct note types (Red, Blue, Green, Yellow) spawn at high speeds.
+* **Reactive Audio:** Each note color triggers a unique harmonious sound (C-Major arpeggio), allowing the player to "build" the melody as they catch notes.
 
-Game Loop: Includes a "Game Over" screen with a functional "Restart" button, and a full ambient audio mix (rain, background music).
+---
 
-🛠️ Tech Stack
+## 🛠️ Tech Stack
 
-Engine: Unity 2022.3 (Universal Render Pipeline - URP)
+| Component | Details |
+| :--- | :--- |
+| **Engine** | Unity 2022.3 (Universal Render Pipeline) |
+| **Language** | C# |
+| **Animation** | **DOTween (HOTween v2)** - Used for fluid, non-linear player movement. |
+| **UI** | TextMeshPro |
 
-Language: C#
+---
 
-Key Packages:
+## 🎮 How to Play
 
-DOTween (HOTween v2): Used for all player "snap" movement, creating a fluid, non-linear motion.
+**Objective:** Catch every falling note to keep the music alive.
 
-TextMeshPro: For all UI text elements.
+| Action | Controls |
+| :--- | :--- |
+| **Move Left** | <kbd>A</kbd> or <kbd>←</kbd> |
+| **Move Right** | <kbd>D</kbd> or <kbd>→</kbd> |
 
-🎮 How to Play
+**Lose Condition:** If you miss a single note and it touches the floor, the Game Over screen triggers.
 
-Move Left: Press 'A' or the Left Arrow key.
+---
 
-Move Right: Press 'D' or the Right Arrow key.
+## 📊 Project Status & Roadmap
 
-Objective: Catch every falling note.
+**Current Status:** Alpha Prototype
+*The core loop is functional, stable, and meets all initial design requirements.*
 
-Lose Condition: If you miss a single note and it hits the floor, the game is over.
-
-📊 Project Status
-
-Status: Alpha Prototype
-
-The core gameplay loop is complete and functional. The game is stable and playable, successfully meeting all current design requirements.
-
-Future Goals:
-
-Implement player animations (Idle, Strafe Left, Strafe Right) to match the movement.
-
-Add a scoring system that rewards consecutive hits.
-
-Create more complex, pre-defined note sequences (beatmaps) instead of random spawning.
+---
