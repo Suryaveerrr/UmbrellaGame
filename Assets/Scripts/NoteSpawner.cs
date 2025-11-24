@@ -6,8 +6,8 @@ public class NoteSpawner : MonoBehaviour
     public Transform player;
 
     [Header("Settings")]
-    public float spawnInterval = 0.6f; // Faster spawning!
-    public float laneDistance = 3f; // MUST match the Player's lane distance
+    public float spawnInterval = 0.6f; 
+    public float laneDistance = 3f; 
 
     void Start()
     {
@@ -18,10 +18,10 @@ public class NoteSpawner : MonoBehaviour
     {
         if (player == null || notePrefabs.Length == 0) return;
 
-        // 1. Pick Random Note Color
+      
         GameObject selectedPrefab = notePrefabs[Random.Range(0, notePrefabs.Length)];
 
-        // 2. Pick Random Lane (0, 1, or 2)
+       
         int randomLaneIndex = Random.Range(0, 3);
         float spawnX = 0f;
 
@@ -29,10 +29,10 @@ public class NoteSpawner : MonoBehaviour
         else if (randomLaneIndex == 1) spawnX = 0f;
         else if (randomLaneIndex == 2) spawnX = laneDistance;
 
-        // 3. Spawn Position
+        
         Vector3 spawnPos = new Vector3(spawnX, 10f, player.position.z);
 
-        // 4. Instantiate
+        
         Instantiate(selectedPrefab, spawnPos, selectedPrefab.transform.rotation);
     }
 }
