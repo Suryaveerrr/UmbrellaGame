@@ -19,31 +19,31 @@ public class MusicManager : MonoBehaviour
         Instance = this;
     }
 
-    // Called when Player catches a note
+   
     public void NoteCaught(int noteID)
     {
-        // Play the sound for that specific color
+        
         if (noteID >= 0 && noteID < noteSounds.Length)
         {
             audioSource.PlayOneShot(noteSounds[noteID]);
         }
     }
 
-    // Called when a note hits the FLOOR
+    
     public void NoteMissed()
     {
         Debug.Log("Note hit the floor! Game Over.");
 
-        // Play Fail Sound
+        
         if (gameOverSound != null) audioSource.PlayOneShot(gameOverSound);
 
-        // Stop Game
+        
         GameOver();
     }
 
     public void GameOver()
     {
-        Time.timeScale = 0f; // Pause
+        Time.timeScale = 0f; 
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
